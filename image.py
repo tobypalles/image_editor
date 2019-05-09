@@ -185,6 +185,36 @@ def four_tone():
 		else:
 			screen.set_at((x, y), (15, 15, 80))
 
+def sepia():
+
+	for x in range(0,600):
+		for y in range(0, 600):
+			color = screen.get_at((x,y))
+
+			r = color[0]
+			g = color[1]
+			b = color[2]
+
+
+			final_r = 0.393 * r + 0.769 * g + 0.189 * b
+
+			final_g = 0.349 * r + 0.686 * g + 0.168 * b
+
+			final_b = 0.272 * r + .534 * g + 0.131 * b
+
+			if final_r > 255:
+				final_r = 255
+
+			if final_g > 255:
+				final_g = 255
+
+			if final_b > 255:
+				final_b = 255
+
+
+			screen.set_at((x, y),(final_r, final_g, final_b ))
+
+
 
 
 
@@ -248,6 +278,10 @@ while running:
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_f:
 				four_tone()
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_7:
+				sepia()
 
 
 
