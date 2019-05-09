@@ -9,6 +9,7 @@ image_file = pygame.image.load("saved.jpg")
 
 image = pygame.transform.scale(image_file, (600, 600))
 
+print("Hello")
 
 def brighten():
 
