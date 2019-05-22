@@ -5,11 +5,100 @@ size = (600, 600)
 
 screen = pygame.display.set_mode(size)
 
-image_file = pygame.image.load("saved.jpg")
+image_file = pygame.image.load("c2f2.jpg")
 
 image = pygame.transform.scale(image_file, (600, 600))
 
 print("Hello")
+
+
+def maxRed():
+
+	for x in range(0, 600):
+			for y in range(0, 600):
+				color = screen.get_at((x, y))
+
+				r = 255
+				g = color[1]
+				b = color[2]
+
+				screen.set_at((x, y), (r, g, b))
+
+def maxGreen():
+
+	for x in range(0, 600):
+			for y in range(0, 600):
+				color = screen.get_at((x, y))
+				r = color[0]
+				g = 255
+				b = color[2]
+
+				screen.set_at((x, y), (r, g, b))
+
+def maxBlue():
+
+	for x in range(0, 600):
+			for y in range(0, 600):
+				color = screen.get_at((x, y))
+
+				r = color[0]
+				g = color[1]
+				b = 255
+
+				screen.set_at((x, y), (r, g, b))
+
+
+
+def maxPurple():
+
+	for x in range(0, 600):
+			for y in range(0, 600):
+				color = screen.get_at((x, y))
+
+				r = 255
+				g = color[1]
+				b = 255
+
+				screen.set_at((x, y), (r, g, b))
+
+
+def maxYellow():
+
+	for x in range(0, 600):
+			for y in range(0, 600):
+				color = screen.get_at((x, y))
+
+
+				r = 255
+				g = 255
+				b = color[2]
+
+				screen.set_at((x, y), (r, g, b))
+
+def maxCyan():
+
+	for x in range(0, 600):
+			for y in range(0, 600):
+				color = screen.get_at((x, y))
+
+				r = color[0]
+				g = 255
+				b = 255
+
+				screen.set_at((x, y), (r, g, b))
+
+def purpleAura():
+
+	for x in range(0, 600):
+			for y in range(0, 600):
+				color = screen.get_at((x, y))
+
+				r = 138
+				g = color[1]
+				b = 218
+
+				screen.set_at((x, y), (r, g, b))
+
 
 def brighten():
 
@@ -177,6 +266,7 @@ def four_tone():
 			screen.set_at((x, y), (240, 240, 120))
 
 		elif brightness > (2/4) * max:
+
 			screen.set_at((x,y), (240, 30, 30))
 
 		elif brightness > (1/4) * max:
@@ -215,6 +305,76 @@ def sepia():
 			screen.set_at((x, y),(final_r, final_g, final_b ))
 
 
+def harry_potter_mode():
+
+	for x in range(0,600):
+		for y in range(0, 600):
+			color = screen.get_at((x,y))
+
+			r = color[0]
+			g = color[1]
+			b = color[2]
+
+
+			final_r = 0.293 * r + 0.669 * g + 0.089 * b
+
+			final_g = 0.449 * r + 0.887 * g + 0.234 * b
+
+			final_b = 0.172 * r + .434 * g + 0.031 * b
+
+			if final_r > 255:
+				final_r = 255
+
+			if final_g > 255:
+				final_g = 255
+
+			if final_b > 255:
+				final_b = 255
+
+
+			screen.set_at((x, y),(final_r, final_g, final_b ))
+
+
+
+
+def verticalStripes():
+
+	for x in range(0, 600):
+			for y in range(0, 600):
+				color = screen.get_at((x, y))
+
+				if x % 2 == 0:
+
+					r = color[0]
+					g = color[1]
+					b = color[2]
+					screen.set_at((x, y), (r, g, b))
+
+				else:
+					screen.set_at((x, y), (0, 255, 0))
+
+def horizontalStripes():
+
+	for x in range(0, 600):
+			for y in range(0, 600):
+				color = screen.get_at((x, y))
+
+				if isEven(y):
+
+					r = color[0]
+					g = color[1]
+					b = color[2]
+					screen.set_at((x, y), (r, g, b))
+
+				else:
+					screen.set_at((x, y), (0, 255, 0))
+
+def isEven(num):
+
+	if num % 2 == 0:
+		return True
+	else:
+		return False
 
 
 
@@ -227,13 +387,6 @@ while running:
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_l:
 				screen.blit(image, image.get_rect())
-		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_r:
-				screen.fill([100,50,100])
-
-		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_c:
-				pygame.draw.circle(screen, [255, 0, 0], (300, 300), 10)
 
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_b:
@@ -244,15 +397,15 @@ while running:
 				darken()
 
 		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_1:
+			if event.key == pygame.K_q:
 				rmRed()
 
 		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_2:
+			if event.key == pygame.K_w:
 				rmGreen()
 
 		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_3:
+			if event.key == pygame.K_e:
 				rmBlue()
 
 		if event.type == pygame.KEYDOWN:
@@ -260,7 +413,7 @@ while running:
 				pygame.image.save(screen, "c2f.png")
 
 		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_5:
+			if event.key == pygame.K_n:
 				negate()
 
 		if event.type == pygame.KEYDOWN:
@@ -280,9 +433,48 @@ while running:
 				four_tone()
 
 		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_7:
+			if event.key == pygame.K_1:
 				sepia()
 
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_z:
+				maxRed()
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_x:
+				maxGreen()
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_c:
+				maxBlue()
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_p:
+				maxPurple()
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_y:
+				maxYellow()
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_o:
+				maxCyan()
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_6:
+				purpleAura()
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_9:
+				harry_potter_mode()
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_4:
+				verticalStripes()
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_5:
+				horizontalStripes()
 
 
 	pygame.display.flip()
