@@ -371,16 +371,33 @@ def horizontalStripes():
 
 
 
-def fadeTop():
+def mirrorY():
+
+	for x in range(0, 300):
+		for y in range(0,600):
+			color = screen.get_at((x, y))
+
+			r = color[0]
+			g = color[1]
+			b = color[2]
+			screen.set_at((x, y), (r, g, b))
+			screen.set_at((600 - x, y), (r, g, b))
+
+
+def mirrorX():
 
 	for x in range(0, 600):
-		for y in range(0,600):
-			pass
+		for y in range(0,300):
+			color = screen.get_at((x, y))
+
+			r = color[0]
+			g = color[1]
+			b = color[2]
+			screen.set_at((x, y), (r, g, b))
+			screen.set_at((x, 600 - y), (r, g, b))
 
 
-def mirror():
 
-	pass
 
 running = True
 while running:
@@ -480,13 +497,13 @@ while running:
 				horizontalStripes()
 
 		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_SLASH:
-				fadeTop()
-
+			if event.key== pygame.K_7:
+				mirrorY()
 
 		if event.type == pygame.KEYDOWN:
-			if event.key== pygame.K_7:
-				mirror()
+			if event.key == pygame.K_u:
+				mirrorX()
+
 
 	pygame.display.flip()
 
