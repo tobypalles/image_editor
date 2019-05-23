@@ -50,3 +50,4 @@ Mirror y axis: 7
 
 Mirror x axis: u
 
+To undo any filter/effect, press l once to make the image go back to the orginial. 
