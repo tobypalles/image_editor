@@ -359,7 +359,7 @@ def horizontalStripes():
 			for y in range(0, 600):
 				color = screen.get_at((x, y))
 
-				if isEven(y):
+				if y % 2 == 0:
 
 					r = color[0]
 					g = color[1]
@@ -369,15 +369,18 @@ def horizontalStripes():
 				else:
 					screen.set_at((x, y), (0, 255, 0))
 
-def isEven(num):
-
-	if num % 2 == 0:
-		return True
-	else:
-		return False
 
 
+def fadeTop():
 
+	for x in range(0, 600):
+		for y in range(0,600):
+			pass
+
+
+def mirror():
+
+	pass
 
 running = True
 while running:
@@ -476,7 +479,14 @@ while running:
 			if event.key == pygame.K_5:
 				horizontalStripes()
 
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_SLASH:
+				fadeTop()
+
+
+		if event.type == pygame.KEYDOWN:
+			if event.key== pygame.K_7:
+				mirror()
 
 	pygame.display.flip()
 
- 
